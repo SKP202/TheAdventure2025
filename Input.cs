@@ -16,25 +16,25 @@ public unsafe class Input
     public bool IsLeftPressed()
     {
         ReadOnlySpan<byte> keyboardState = new(_sdl.GetKeyboardState(null), (int)KeyCode.Count);
-        return keyboardState[(int)KeyCode.Left] == 1;
+        return keyboardState[(int)KeyCode.A] == 1;
     }
 
     public bool IsRightPressed()
     {
         ReadOnlySpan<byte> keyboardState = new(_sdl.GetKeyboardState(null), (int)KeyCode.Count);
-        return keyboardState[(int)KeyCode.Right] == 1;
+        return keyboardState[(int)KeyCode.D] == 1;
     }
 
     public bool IsUpPressed()
     {
         ReadOnlySpan<byte> keyboardState = new(_sdl.GetKeyboardState(null), (int)KeyCode.Count);
-        return keyboardState[(int)KeyCode.Up] == 1;
+        return keyboardState[(int)KeyCode.W] == 1;
     }
 
     public bool IsDownPressed()
     {
         ReadOnlySpan<byte> keyboardState = new(_sdl.GetKeyboardState(null), (int)KeyCode.Count);
-        return keyboardState[(int)KeyCode.Down] == 1;
+        return keyboardState[(int)KeyCode.S] == 1;
     }
 
     public bool IsKeyAPressed()
@@ -47,6 +47,24 @@ public unsafe class Input
     {
         ReadOnlySpan<byte> _keyboardState = new(_sdl.GetKeyboardState(null), (int)KeyCode.Count);
         return _keyboardState[(int)KeyCode.B] == 1;
+    }
+
+    public bool IsKeyEPressed()
+    {
+        ReadOnlySpan<byte> _keyboardState = new(_sdl.GetKeyboardState(null), (int)KeyCode.Count);
+        return _keyboardState[(int)KeyCode.E] == 1;
+    }
+
+    public bool IsKeyQPressed()
+    {
+        ReadOnlySpan<byte> _keyboardState = new(_sdl.GetKeyboardState(null), (int)KeyCode.Count);
+        return _keyboardState[(int)KeyCode.Q] == 1;
+    }
+
+    public bool IsKeyRPressed()
+    {
+        ReadOnlySpan<byte> _keyboardState = new(_sdl.GetKeyboardState(null), (int)KeyCode.Count);
+        return _keyboardState[(int)KeyCode.R] == 1;
     }
 
     public bool ProcessInput()

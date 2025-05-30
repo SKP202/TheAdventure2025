@@ -26,6 +26,9 @@ public class PlayerObject : RenderableGameObject
 
     public (PlayerState State, PlayerStateDirection Direction) State { get; private set; }
 
+    public int MaxHealth { get; set; } = 100;
+    public int Health { get; set; } = 100;
+
     public PlayerObject(SpriteSheet spriteSheet, int x, int y) : base(spriteSheet, (x, y))
     {
         SetState(PlayerState.Idle, PlayerStateDirection.Down);
@@ -145,5 +148,15 @@ public class PlayerObject : RenderableGameObject
         }
 
         Position = (x, y);
+    }
+
+    public void TakeDamage(int amount)
+    {
+        Health -= amount;
+        if (Health < 0) Health = 0;
+        if (Health == 0)
+        {
+            GameOver();
+        }
     }
 }

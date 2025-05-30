@@ -110,4 +110,24 @@ public unsafe class GameRenderer
     {
         _sdl.RenderPresent(_renderer);
     }
+
+    public void DrawFilledBar(int x, int y, int width, int height)
+    {
+    
+        var screenPos = _camera.ToScreenCoordinates(new Silk.NET.Maths.Rectangle<int>(x, y, width, height));
+        int startX = screenPos.Origin.X;
+        int startY = screenPos.Origin.Y;
+
+        for (int i = 0; i < height; i++)
+        {
+            _sdl.RenderDrawLine(_renderer, startX, startY + i, startX + width - 1, startY + i);
+        }
+    }
+
+    public (int Width, int Height) GetWindowSize()
+    {
+        return _window.Size;
+    }
+
+
 }
