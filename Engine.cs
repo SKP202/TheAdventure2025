@@ -82,7 +82,7 @@ public class Engine
         foreach (var pos in skeletonPositions)
         {
             var skeletonSheet = SpriteSheet.Load(_renderer, "skeleton.json", "Assets");
-            skeletonSheet.ActivateAnimation("IdleDown"); // Or whatever default animation you have
+            skeletonSheet.ActivateAnimation("IdleDown"); 
             var skeleton = new SkeletonObject(skeletonSheet, pos);
             _gameObjects.Add(skeleton.Id, skeleton);
         }
@@ -109,7 +109,7 @@ public class Engine
         _player.UpdatePosition(up, down, left, right, 48, 48, msSinceLastFrame);
         _scriptEngine.ExecuteAll(this);
 
-        // Move skeletons toward the player
+       
         foreach (var obj in _gameObjects.Values)
         {
             if (obj is SkeletonObject skeleton)
@@ -118,19 +118,19 @@ public class Engine
             }
         }
 
-        // Only add a bomb on the transition from not pressed to pressed
+      
         if (isEPressed && !_wasEPressedLastFrame)
         {
             AddBomb(_player.Position.X, _player.Position.Y, false);
         }
 
-        // Only push bomb on the transition from not pressed to pressed
+       
         if (isQPressed && !_wasQPressedLastFrame)
         {
-            // Find the nearest bomb within a certain range (e.g., 32 pixels)
+            
             var playerPos = _player.Position;
             TemporaryGameObject? nearestBomb = null;
-            double minDist = 32.0; // Adjust as needed
+            double minDist = 32.0; 
 
             foreach (var obj in _gameObjects.Values)
             {
@@ -149,7 +149,7 @@ public class Engine
 
             if (nearestBomb != null)
             {
-                // Determine push direction based on player state
+               
                 var dir = _player.State.Direction;
                 int dx = 0, dy = 0;
                 switch (dir)
@@ -160,16 +160,16 @@ public class Engine
                     case PlayerObject.PlayerStateDirection.Right: dx = 48; break;
                 }
 
-                // Move the bomb
+                
                 nearestBomb.Position = (nearestBomb.Position.X + dx, nearestBomb.Position.Y + dy);
 
-                // Trigger attack animation
+          
                 _player.Attack();
             }
         }
 
-        _wasEPressedLastFrame = isEPressed; // Update for next frame
-        _wasQPressedLastFrame = isQPressed; // Update for next frame
+        _wasEPressedLastFrame = isEPressed;
+        _wasQPressedLastFrame = isQPressed; 
     }
 
     public void RenderFrame()
@@ -295,15 +295,15 @@ public class Engine
         float healthRatio = Math.Clamp(_player.Health / (float)_player.MaxHealth, 0f, 1f);
         int fillWidth = (int)(barWidth * healthRatio);
 
-        // Draw outline (black)
+       
         _renderer.SetDrawColor(0, 0, 0, 255);
         _renderer.DrawFilledBar(x - outlineThickness, y - outlineThickness, barWidth + 2 * outlineThickness, barHeight + 2 * outlineThickness);
 
-        // Draw background (dark gray)
+       
         _renderer.SetDrawColor(40, 40, 40, 255);
         _renderer.DrawFilledBar(x, y, barWidth, barHeight);
 
-        // Draw health fill (green)
+       
         _renderer.SetDrawColor(60, 220, 60, 255);
         _renderer.DrawFilledBar(x, y, fillWidth, barHeight);
     }

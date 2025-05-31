@@ -10,7 +10,7 @@ namespace TheAdventure.Models
 {
     public class SkeletonObject : RenderableGameObject
     {
-        private const int Speed = 64; // pixels per second
+        private const int Speed = 64; 
 
         public SkeletonObject(SpriteSheet spriteSheet, (int X, int Y) position)
             : base(spriteSheet, position) { }
