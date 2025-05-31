@@ -1,40 +1,14 @@
 {
   "rowCount": 5,
-  "columnCount": 11,
-  "frameWidth": 48,
-  "frameHeight": 48,
+  "columnCount": 20,
+  "frameWidth": 64,
+  "frameHeight": 64,
   "frameCenter": {
-    "offsetX": 24,
-    "offsetY": 42
+    "offsetX": 32,
+    "offsetY": 32
   },
   "fileName": "skeleton.png",
   "animations": {
-    "Idle": {
-      "startFrame": {
-        "row": 3,
-        "col": 0
-      },
-      "endFrame": {
-        "row": 3,
-        "col": 2
-      },
-      "durationMs": 1000,
-      "loop": true,
-      "flip": 0
-    },
-    "Walk": {
-      "startFrame": {
-        "row": 2,
-        "col": 0
-      },
-      "endFrame": {
-        "row": 2,
-        "col": 8
-      },
-      "durationMs": 1000,
-      "loop": true,
-      "flip": 0
-    },
     "AttackMelee": {
       "startFrame": {
         "row": 0,
@@ -42,63 +16,64 @@
       },
       "endFrame": {
         "row": 0,
-        "col": 8
+        "col": 12
       },
-      "durationMs": 700,
-      "loop": true,
-      "flip": 0
-    },
-    "AttackSpell": {
-      "startFrame": {
-        "row": 1,
-        "col": 1
-      },
-      "endFrame": {
-        "row": 1,
-        "col": 3
-      },
-      "durationMs": 400,
-      "loop": false,
-      "flip": 0
-    },
-    "SpellProjectile": {
-      "startFrame": {
-        "row": 1,
-        "col": 4
-      },
-      "endFrame": {
-        "row": 1,
-        "col": 7
-      },
-      "durationMs": 400,
-      "loop": false,
-      "flip": 0
-    },
-    "Hurt": {
-      "startFrame": {
-        "row": 4,
-        "col": 1
-      },
-      "endFrame": {
-        "row": 4,
-        "col": 1
-      },
-      "durationMs": 200,
-      "loop": false,
-      "flip": 0
+      "flip": 1,
+      "durationMs": 1000,
+      "loop": false
     },
     "Death": {
       "startFrame": {
         "row": 1,
-        "col": 8
+        "col": 0
       },
       "endFrame": {
         "row": 1,
-        "col": 10
+        "col": 12
       },
-      "durationMs": 600,
-      "loop": false,
-      "flip": 0
+      "flip": 1,
+      "durationMs": 700,
+      "loop": false
+    },
+    "Hurt": {
+      "startFrame": {
+        "row": 4,
+        "col": 0
+      },
+      "endFrame": {
+        "row": 4,
+        "col": 2
+      },
+      "flip": 0,
+      "durationMs": 500,
+      "loop": false
+    },
+    "Idle": {
+      "startFrame": {
+        "row": 3,
+        "col": 0
+      },
+      "endFrame": {
+        "row": 3,
+        "col": 3
+      },
+      "flip": 0,
+      "durationMs": 1000,
+      "loop": true
+    },
+
+    "Walk": {
+      "startFrame": {
+        "row": 2,
+        "col": 0
+      },
+      "endFrame": {
+        "row": 2,
+        "col": 11
+      },
+      "flip": 1,
+      "durationMs": 800,
+      "loop": true
     }
   }
 }

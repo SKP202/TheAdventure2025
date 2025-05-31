@@ -45,12 +45,13 @@ public class ScriptEngine
 
     public void LoadAll(string scriptFolder)
     {
-        AttachWatcher(scriptFolder);
         var dirInfo = new DirectoryInfo(scriptFolder);
         if (!dirInfo.Exists)
         {
-            return;
+            Directory.CreateDirectory(scriptFolder);
         }
+
+        AttachWatcher(scriptFolder);
 
         foreach (var file in dirInfo.GetFiles())
         {

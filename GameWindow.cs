@@ -16,6 +16,8 @@ public unsafe class GameWindow : IDisposable
         }
     }
 
+    public IntPtr WindowPtr => _window;
+
     private IntPtr _window;
     private readonly Sdl _sdl;
 

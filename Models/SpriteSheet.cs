@@ -108,13 +108,16 @@ public class SpriteSheet
         else
         {
             var totalFrames = (ActiveAnimation.EndFrame.Row - ActiveAnimation.StartFrame.Row) * ColumnCount +
-                ActiveAnimation.EndFrame.Col - ActiveAnimation.StartFrame.Col;
-            var currentFrame = (int)((DateTimeOffset.Now - _animationStart).TotalMilliseconds /
-                                     (ActiveAnimation.DurationMs / (double)totalFrames));
-            if (currentFrame > totalFrames)
+                              (ActiveAnimation.EndFrame.Col - ActiveAnimation.StartFrame.Col) + 1;
+            if (totalFrames <= 0)
+                return; 
+
+            var frameDuration = ActiveAnimation.DurationMs / (double)totalFrames;
+            var currentFrame = (int)((DateTimeOffset.Now - _animationStart).TotalMilliseconds / frameDuration);
+            if (currentFrame >= totalFrames)
             {
                 AnimationFinished = true;
-                
+
                 if (ActiveAnimation.Loop)
                 {
                     _animationStart = DateTimeOffset.Now;
@@ -122,12 +125,12 @@ public class SpriteSheet
                 }
                 else
                 {
-                    currentFrame = totalFrames;
+                    currentFrame = totalFrames - 1;
                 }
             }
 
-            var currentRow = ActiveAnimation.StartFrame.Row + currentFrame / ColumnCount;
-            var currentCol = ActiveAnimation.StartFrame.Col + currentFrame % ColumnCount;
+            var currentRow = ActiveAnimation.StartFrame.Row + (currentFrame + ActiveAnimation.StartFrame.Col) / ColumnCount;
+            var currentCol = (ActiveAnimation.StartFrame.Col + currentFrame) % ColumnCount;
 
             renderer.RenderTexture(_textureId,
                 new Rectangle<int>(currentCol * FrameWidth, currentRow * FrameHeight, FrameWidth, FrameHeight),

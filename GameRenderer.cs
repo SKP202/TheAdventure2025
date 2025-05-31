@@ -129,5 +129,8 @@ public unsafe class GameRenderer
         return _window.Size;
     }
 
-
+    public void SetWindowTitle(string title)
+    {
+        _sdl.SetWindowTitle((Window*)_window.WindowPtr, title);
+    }
 }
